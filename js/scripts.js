@@ -1,3 +1,11 @@
+//Take home from day 1
+var myGoal = "I want to help my students succeed in whatever their goals are for taking this class.";
+var myHobby = "My hobby used to be writing code, but now it's my job, so I am currently looking for a new hobby.";
+
+console.log(myGoal + myHobby);
+
+//Day 2 In class notes
+
 console.log(myName); // WIll return undefined because vars are hoisted
 var myName = "Ryeker";
 var myAge = 21;
