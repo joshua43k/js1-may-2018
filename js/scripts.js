@@ -1,87 +1,47 @@
-// FUNCTIONS
+// step 1
+let todos = [];
 
-// NAMED FUNCTION
-function logHello() { // accepts 0 arguments
-  console.log('hello!'); // does not return value but logs something to the console.
-};
+let todo1 = [prompt("What do you want to do first?", "Eat")];
+let todo2 = [prompt("What do you want to do second?", "Eat")];
+let todo3 = [prompt("What do you want to do third?", "Eat")];
 
-logHello(); // Function CALL. This is where the function is executed.
+// //THIS IS A GOOD PLACE FOR EDGE CASING
+todos.push(todo1, todo2, todo3);
 
-// ANONYMOUS FUNCTION 
-let logOut = function() { // No name to the function
-  console.log('str');
-};
+// Step 2
+for(let i = 0; i < todos.length; i++) {
 
-//Function that takes a string and capitalizes the first letters of each word.
-function capitalCase(string) {
-  let words = string.split(' '); //Creates an array of the words in the string.
-  let returnArr = [];
-  words.forEach(word => { //loop over the words in the array
-    let letters = word.split(''); //split the word into its letters
-    let capped = letters[0].toUpperCase(); //capitalize the first letter of the word.
-    letters.splice(0, 1, capped); //Replace the old lower cased letter with the new uppercased one.
-    returnArr.push(letters.join('')); //Push our new word into the array to be returned. 
-  });
-  return returnArr.join(' '); //Return the newly created string.
-};
+  let timeline = prompt(`How many days will it take to get ${todos[i][0]} done?`, "2");
 
+  timeline = !isNaN(parseInt(timeline)) ? parseInt(timeline) : 2;
 
-let newString = capitalCase("peter piper"); //function CALL
-
-console.log(newString);
-
-let capsName = capitalCase('captain america');
-console.log(capsName);
-
-let simleFatArrowFn = () => { //SIMPLEST fat arrow function
-  console.log('stuff')
-};
-
-let singleArgFatArrowFn = stuff => { //1 argument fat arrow function
-  console.log(stuff)
-};
-
-let multiArgFatArrowFn = (stuff, things, etc) => { //1 argument fat arrow function
-  console.log(stuff)
-};
-
-function divide(arg1, arg2) { //Order of arguments MATTERS
-  return arg2 / arg1;
+  todos[i].unshift(timeline);
 }
+// console.log(todos, 'after adding time it will take');
 
-//TRY IT OUT #1
-/*Accept 1 argument (age of the dog in years).
-Return the age of the dog using the conversion rate of 1 year to 7 "dog" years.
-Alert the answer.*/
+todos.sort();
+// console.log(todos, 'after sort');
+// 
 
-function ageDog(years) {
-  if(!isNaN(years)) {
-    return years * 7;
-  } else {
-    ageDog(parseInt(prompt("How old is your dog in years?", "3")))
+
+
+let longest = todos[0];
+let j = 0;
+while(j < todos.length) {
+  if(todos[j][0] > longest[0]) longest = todos[j]; //valid inline if statement
+  // longest = todos[j][0] > longest[0] ? longest = todos[j] : longest = longest; //TERNARY VERSION
+  // console.log(todos[j][1]);
+  j++;
+}
+longest.push('this');
+// 
+// 
+// 
+// 
+let z = 0;
+do {
+  if(todos[z][todos[z].length - 1] !== "this") {
+    todos[z].push("done");
   }
-
-};
-
-alert(ageDog(parseInt(prompt("How old is your dog in years?", "3"))));
-
-
-//Try it out # 2
-
-function lifetimeCalculator(age, dailyUse) {
-  if(!isNaN(age) && !isNaN(dailyUse)) {
-    const death = 80;
-    return (death - age) * (dailyUse * 365);
-  } else {
-    userAge = prompt('how old are you?', '30');
-    userUse = prompt("How much do you use every day?");
-    lifetimeCalculator(parseInt(userAge), parseInt(userUse));
-  }  
-};
-
-let userAge = prompt('how old are you?', '30');
-let userUse = prompt("How much do you use every day?", '1');
-
-let usage = lifetimeCalculator(parseInt(userAge), parseInt(userUse));
-
-alert(`You will need ${usage} to last until you're 80.`);
+  z++;
+}while(z < todos.length);
