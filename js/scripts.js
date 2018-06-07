@@ -45,3 +45,12 @@ do {
   }
   z++;
 }while(z < todos.length);
+
+//STEP 5
+let doneItems = [];
+
+todos.forEach(todo => {
+    if(todo[todo.length - 1] === 'done') doneItems.push(todo);
+  });
+
+alert(doneItems);
