@@ -87,7 +87,7 @@ let div = document.querySelector('div');
 let h1 = document.querySelector('h1');
 //Try it out #2
 button.addEventListener('click', e => {
-  e.target.textContent = "Goodbye cats!!";
+  alert('youre the best');
 });
 
 div.addEventListener('mouseenter', e => {
